@@ -1,0 +1,17 @@
+public class PopulateNextPointer {
+    public void connect(Node root){
+        Node level_start = root;
+        while (level_start != null){
+            Node cur = level_start;
+            while (cur != null){
+                if (cur.left != null)
+                    cur.left.next = cur.right;
+                if (cur.right != null)
+                    cur.right.next = cur.next.left;
+
+                cur = cur.next;
+            }
+            level_start = level_start.left;
+        }
+    }
+}
